@@ -1,30 +1,45 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+// AppHeader, AppMain, AppFooter
+// 1 - importo il componente dai component
+import AppHeader from "./components/AppHeader.vue";
+import AppMain from "./components/AppMain.vue";
+
+export default {
+  data() {
+    return {
+      count: 0 
+    }
+  },
+  components:{
+    // 2 lo importo nella lista dei componenti del mio componente
+    AppHeader,
+    AppMain
+  },
+  methods: {},
+  computed: {},
+  mounted(){},
+}
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+<!-- 3 - inserisco il mio componente dove voglio che sia visibile come self-closing tag -->
+  <AppHeader />
+  <AppMain />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<style lang="scss">
+/*  inserisci qui dentro stile generico */
+@use "./styles/partials/variables" as *;
+@use "./styles/partials/mixins" as *;
+@use "./styles/general.scss" as *;
+
+
+body{
+  @include reset;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+ul{
+  @include flex(row, space-between, center)
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+
 </style>
